@@ -101,3 +101,9 @@ function perfromClickWithRetry() {
 //= là gán giá trị , ko phải so sánh
 //== la so sánh giá trị
 //=== là so sánh giá trị + kiểu dữ liệu
+
+const c = 'Hello'
+
+if(c === 'a'){
+    console.log('hoih', c);
+}
