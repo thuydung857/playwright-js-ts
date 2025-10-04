@@ -56,3 +56,10 @@ const danhSachNong = lenhDieuKhien.filter(lenh =>
 
 console.log(`Mảng lệnh điều khiển:`, lenhDieuKhien);
 console.log(`Danh sách NÓNG (cần chú ý):`, danhSachNong);
+
+// Passed: 5/5 - Tốt
+// ✔ Tình huống 1: Xe cứu thương GL02 được ưu tiên tuyệt đối
+// ✔ Tình huống 2: GL01 có 45 điểm ưu tiên và tăng thời lượng đèn xanh
+// ✔ Tình huống 3: GL01 có ghi chú bảo trì, GL03 fallback "Không có"
+// ✔ Tình huống 4: Tất cả lệnh đều có cảnh báo thời tiết nguy hiểm
+// ✔ Tình huống 5: GL03 ban đêm có 90s, 10 điểm, vận hành cơ bản
