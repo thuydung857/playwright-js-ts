@@ -1,14 +1,14 @@
 console.log('Hello Node JS');
 
-let a: string = '10'
-let b: number = 1
-let c: number = Number(a) + b
+let a1: string = '10'
+let b1: number = 1
+let c1: number = Number(a1) + b1
 
-console.log(c);
+console.log(c1);
 
 //any
-let userName: any = 'Nguyen van a'
-userName = 123
+let userName1: any = 'Nguyen van a'
+userName1 = 123
 
 //void
 function printReceipt(orderId: number): void {

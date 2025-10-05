@@ -188,7 +188,7 @@ class User implements IUser {
     role: UserRole;
     isActive: boolean;
 
-    constructor(name: string, email: string, role: UserRolem, isActive: boolean) {
+    constructor(name: string, email: string, role: UserRole, isActive: boolean) {
         this.email = email;
         this.name = name;
         this.id = faker.string.uuid()
