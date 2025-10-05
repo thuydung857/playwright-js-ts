@@ -164,7 +164,71 @@ console.log(newCustom);
 
 
 //Class
-// class User implements ILenhDieuKhien {//example thoi nha 
+type UserRole = 'Admin' | 'Member' | 'Guest'
+interface IUser {
+    id: string;
+    name: string;
+    email: string;
+    role: UserRole;
+    isActive: boolean;
 
-// } 
-//Coi lai bai 10 luc 2:00:00
+    getFullName(): string;
+    generateMessage(template: string): string
+}
+
+interface IMarketTingContact {
+    fullName: string;
+    email: string;
+    personalBody: string
+}
+class User implements IUser {
+    id: string;
+    name: string;
+    email: string;
+    role: UserRole;
+    isActive: boolean;
+
+    constructor(name: string, email: string, role: UserRolem, isActive: boolean) {
+        this.email = email;
+        this.name = name;
+        this.id = faker.string.uuid()
+        this.role = role
+        this.isActive = isActive
+    }
+
+    getFullName(): string {
+        return this.name.trim()
+    }
+    generateMessage(template: string): string {
+        const cleanName = this.getFullName()
+        return template.replace('{{NAME}}', cleanName)
+    }
+
+}
+
+function createRandomUser(): IUser {
+    return new User(`${faker.person.fullName()}`, faker.internet.email(), faker.helpers.arrayElement(['Admin', 'Member', 'Guest']), faker.datatype.boolean())
+}
+
+function processUserForMarketing(user: IUser[]): IMarketTingContact[] {
+    const emailTemplate = 'Xin chao {{NAME}} , cam on ban la thanh vien tich cuc'
+    const marketingList = user.filter(user => user.role === 'Member' && user.isActive)
+        .map(user => {
+            return {
+                fullName: user.getFullName(),
+                email: user.email,
+                personalBody: user.generateMessage(emailTemplate)
+            }
+        })
+    return marketingList
+}
+
+function main() {
+    const rawUser: IUser[] = Array.from({ length: 10 }, createRandomUser)
+    const cleanMarketList = processUserForMarketing(rawUser)
+    cleanMarketList.forEach(contact => {
+        console.log(`Da gui toi. ${contact.email} | noi dung ${contact.personalBody} | name ${contact.fullName}`);
+    })
+}
+
+main()
